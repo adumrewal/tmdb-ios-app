@@ -8,7 +8,22 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ContentView: UIViewControllerRepresentable {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let homeVC = HomeViewController()
+        let navController = UINavigationController(rootViewController: homeVC)
+        navController.setNavigationBarHidden(true, animated: false)
+        navController.addChild(homeVC)
+        return navController
+    }
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+        // Does nothing
+    }
+}
+
+struct ContentViewDemo: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -75,6 +90,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentViewDemo().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
