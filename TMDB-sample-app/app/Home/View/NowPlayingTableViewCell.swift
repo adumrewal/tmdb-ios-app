@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Nuke
 
 class NowPlayingTableViewCell: UITableViewCell {
     
@@ -18,5 +19,15 @@ class NowPlayingTableViewCell: UITableViewCell {
         backgroundColor = .clear
         textLabel?.text = movieModel.title
         textLabel?.textColor = .white
+        let request = ImageRequest(url: URL(string: "https://image.tmdb.org/t/p/w500\(movieModel.posterPath)")!, processors: [
+            ImageProcessors.RoundedCorners(radius: 16)
+        ])
+        
+        let options = ImageLoadingOptions(placeholder: UIImage(named: "cup"),
+                                          transition: .fadeIn(duration: 0.33),
+                                          failureImage: UIImage(named: "cup"),
+                                          contentModes: .init(success: .scaleAspectFill, failure: .center, placeholder: .center))
+        
+        Nuke.loadImage(with: request,options: options, into: imageView!)
     }
 }

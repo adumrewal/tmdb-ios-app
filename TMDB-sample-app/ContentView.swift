@@ -12,7 +12,7 @@ struct ContentView: UIViewControllerRepresentable {
     @Environment(\.managedObjectContext) private var viewContext
     
     func makeUIViewController(context: Context) -> UINavigationController {
-        let homeVC = HomeViewController()
+        let homeVC = HomeViewController(viewContext)
         let navController = UINavigationController(rootViewController: homeVC)
         navController.setNavigationBarHidden(true, animated: false)
         navController.addChild(homeVC)

@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import CoreData
 import SwiftUI
 
 class HomeViewController: UIViewController {
     private let viewModel: HomeViewModel
     private let cellReuseIdentifier = "NowPlayingTableViewCell"
     
-    public init() {
-        viewModel = HomeViewModel()
+    public init(_ managedObjectContext: NSManagedObjectContext) {
+        viewModel = HomeViewModel(managedObjectContext)
         super.init(nibName: nil, bundle: nil)
         
         viewModel.viewController = self
@@ -118,5 +119,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let movieModel = viewModel.nowPlayingMovieInfoModel(at: indexPath.row)
         cell.configure(with: movieModel)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Does nothing
+//        viewModel.didTap()
     }
 }

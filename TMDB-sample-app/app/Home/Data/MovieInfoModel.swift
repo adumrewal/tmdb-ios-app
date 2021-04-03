@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MovieInfoModel: Decodable {
+class MovieInfoModel: Codable {
     let posterPath: String
     let releaseDate: String
     let id: Int
