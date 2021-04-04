@@ -123,6 +123,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Does nothing
-//        viewModel.didTap()
+        let movieModel = viewModel.nowPlayingMovieInfoModel(at: indexPath.row)
+        let movieDetailsVC = MovieDetailsViewController(movieModel)
+        navigationController?.pushViewController(movieDetailsVC, animated: true)
     }
 }
