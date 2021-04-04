@@ -10,24 +10,32 @@ import SwiftUI
 import Nuke
 
 class NowPlayingTableViewCell: UITableViewCell {
+    private var movieInfoView: MovieInfoView?
     
     override func prepareForReuse() {
+        movieInfoView?.removeFromSuperview()
+        movieInfoView = nil
         super.prepareForReuse()
     }
     
     func configure(with movieModel: MovieInfoModel) {
         backgroundColor = .clear
-        textLabel?.text = movieModel.title
-        textLabel?.textColor = .white
-        let request = ImageRequest(url: URL(string: "https://image.tmdb.org/t/p/w500\(movieModel.posterPath)")!, processors: [
-            ImageProcessors.RoundedCorners(radius: 16)
-        ])
-        
-        let options = ImageLoadingOptions(placeholder: UIImage(named: "cup"),
-                                          transition: .fadeIn(duration: 0.33),
-                                          failureImage: UIImage(named: "cup"),
-                                          contentModes: .init(success: .scaleAspectFill, failure: .center, placeholder: .center))
-        
-        Nuke.loadImage(with: request,options: options, into: imageView!)
+        selectionStyle = .none
+        setupMovieInfoView(with: movieModel)
     }
+    
+    func setupMovieInfoView(with movieModel: MovieInfoModel) {
+        let view = MovieInfoView(frame: .zero, movieModel: movieModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(view)
+        view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
+        view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        
+        movieInfoView = view
+    }
+
 }

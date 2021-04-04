@@ -1,5 +1,5 @@
 //
-//  MovieDetailColumnView.swift
+//  MovieInfoColumnView.swift
 //  TMDB-sample-app
 //
 //  Created by Amol Dumrewal on 04/04/21.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class MovieDetailColumnView: UIView {
+class MovieInfoColumnView: UIView {
     private var movieModel: MovieInfoModel
     
     init(frame: CGRect, movieModel: MovieInfoModel) {
@@ -38,9 +38,7 @@ class MovieDetailColumnView: UIView {
     
     func addViewsToStackView() {
         stackView.addArrangedSubview(UIView())
-        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("Release Date", subtitle: movieModel.releaseDate))
-        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("⭐️ Rating", subtitle: "\(String(movieModel.voteAverage))"))
-        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle("♥️ Popularity", subtitle: "\(String(movieModel.popularity))"))
+        stackView.addArrangedSubview(arrangedViewForTitleAndSubtitle(movieModel.title, subtitle: movieModel.overview))
         stackView.addArrangedSubview(UIView())
     }
     
@@ -48,7 +46,7 @@ class MovieDetailColumnView: UIView {
         let containerView = UIStackView(frame: .zero)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.axis = .vertical
-        containerView.distribution = .fillProportionally
+        containerView.distribution = .equalSpacing
         
         containerView.addArrangedSubview(titleViewForText(title))
         containerView.addArrangedSubview(separatorView())
@@ -60,13 +58,13 @@ class MovieDetailColumnView: UIView {
     func titleViewForText(_ text: String) -> UIView {
         let label = UILabel()
         label.text = text
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.font = UIFont.preferredFont(forTextStyle: .title2).bold()
         label.minimumScaleFactor = 0.75
         label.adjustsFontForContentSizeCategory = true
         label.adjustsFontSizeToFitWidth = true
-        label.textColor = .lightGray
+        label.textColor = .darkGray
         label.backgroundColor = .clear
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         return label
     }
     
@@ -77,7 +75,7 @@ class MovieDetailColumnView: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .gray
         label.backgroundColor = .clear
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }
     

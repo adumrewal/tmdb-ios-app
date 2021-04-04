@@ -46,13 +46,13 @@ class HomeViewController: UIViewController {
     }
     
     private func setupBackgroundView() {
-        view.backgroundColor = .systemRed
+        view.backgroundColor = .white
     }
     
     private lazy var homeTabView: UIView = {
         let homeTabView = UIView.init(frame: view.frame)
         homeTabView.translatesAutoresizingMaskIntoConstraints = false
-        homeTabView.backgroundColor = .systemBlue
+        homeTabView.backgroundColor = .clear
         
         view.addSubview(homeTabView)
         homeTabView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true

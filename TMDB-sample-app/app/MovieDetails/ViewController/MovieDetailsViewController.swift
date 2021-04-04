@@ -39,34 +39,6 @@ class MovieDetailsViewController: UIViewController {
         view.backgroundColor = .white
     }
     
-    private lazy var movieImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(imageView)
-        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        imageView.backgroundColor = .cyan
-        view.backgroundColor = .blue
-        imageView.clipsToBounds = true
-        
-        let moviePosterPath = viewModel.moviePosterPath()
-        let request = ImageRequest(url: URL(string: "https://image.tmdb.org/t/p/w500\(moviePosterPath)")!, processors: [
-            ImageProcessors.RoundedCorners(radius: 16)
-        ])
-        
-        let options = ImageLoadingOptions(placeholder: UIImage(named: "cup"),
-                                          transition: .fadeIn(duration: 0.33),
-                                          failureImage: UIImage(named: "cup"),
-                                          contentModes: .init(success: .scaleAspectFit, failure: .center, placeholder: .center))
-        
-        Nuke.loadImage(with: request,options: options, into: imageView)
-        return imageView
-    }()
-    
     private lazy var movieTopView: MovieDetailTopView = {
         let topView = MovieDetailTopView(frame: .zero, movieModel: viewModel.movieInfoModel())
         topView.translatesAutoresizingMaskIntoConstraints = false
