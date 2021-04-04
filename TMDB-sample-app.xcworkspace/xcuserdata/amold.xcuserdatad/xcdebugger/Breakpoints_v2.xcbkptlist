@@ -3,4 +3,54 @@
    uuid = "704D0EF3-A6D9-4111-92C8-9E9310D5E6C0"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE633FB2-9E8F-4640-8180-6FB442F379DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TMDB-sample-app/app/Home/ViewModel/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "fetchNextPageNowPlayingData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FE633FB2-9E8F-4640-8180-6FB442F379DF - 483b13611edd9475"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;TMDB_sample_app.NowPlayingResponseModel&gt;) -&gt; () in TMDB_sample_app.HomeViewModel.fetchNextPageNowPlayingData() -&gt; ()"
+                  moduleName = "TMDB-sample-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/amold/Desktop/amolD/projects/github/TMDB-sample-app/TMDB-sample-app/app/Home/ViewModel/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "158">
+               </Location>
+               <Location
+                  uuid = "FE633FB2-9E8F-4640-8180-6FB442F379DF - 17fcf73541c58539"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;TMDB_sample_app.NowPlayingResponseModel&gt;) -&gt; () in TMDB_sample_app.HomeViewModel.fetchNextPageNowPlayingData() -&gt; ()"
+                  moduleName = "TMDB-sample-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/amold/Desktop/amolD/projects/github/TMDB-sample-app/TMDB-sample-app/app/Home/ViewModel/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "118">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

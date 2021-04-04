@@ -8,7 +8,7 @@
 import Foundation
 
 class MovieInfoModel: Codable {
-    let posterPath: String
+    let posterPath: String?
     let releaseDate: String
     let voteAverage: Float
     let popularity: Float

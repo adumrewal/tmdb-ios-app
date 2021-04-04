@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Nuke
 
 class MovieInfoView: UIView {
     private var movieModel: MovieInfoModel
@@ -36,17 +35,7 @@ class MovieInfoView: UIView {
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
         
-        let moviePosterPath = movieModel.posterPath
-        let request = ImageRequest(url: URL(string: "https://image.tmdb.org/t/p/w500\(moviePosterPath)")!, processors: [
-            ImageProcessors.RoundedCorners(radius: 16)
-        ])
-        
-        let options = ImageLoadingOptions(placeholder: UIImage(named: "cup"),
-                                          transition: .fadeIn(duration: 0.33),
-                                          failureImage: UIImage(named: "cup"),
-                                          contentModes: .init(success: .scaleAspectFit, failure: .center, placeholder: .center))
-        
-        Nuke.loadImage(with: request,options: options, into: imageView)
+        ImageHelper.setupImageForView(imageView, url: movieModel.posterPath)
         return imageView
     }()
     

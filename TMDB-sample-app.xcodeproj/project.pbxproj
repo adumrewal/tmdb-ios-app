@@ -29,6 +29,7 @@
 		0C87DAA5261A1D4C0058D37A /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87DAA4261A1D4C0058D37A /* MovieInfoView.swift */; };
 		0C87DAAA261A21780058D37A /* MovieInfoColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87DAA9261A21780058D37A /* MovieInfoColumnView.swift */; };
 		0C87DAB0261A29830058D37A /* UIFont+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87DAAF261A29830058D37A /* UIFont+Helper.swift */; };
+		0C87DAB8261A44750058D37A /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87DAB7261A44750058D37A /* ImageHelper.swift */; };
 		38AE5006CDC0FD8FE4FD91EE /* Pods_TMDB_sample_app_TMDB_sample_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081299800834C512C67B1BCF /* Pods_TMDB_sample_app_TMDB_sample_appUITests.framework */; };
 		9C44E145F2CF99BBED0040DA /* Pods_TMDB_sample_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF8482597EA0F4F2669DC0F /* Pods_TMDB_sample_appTests.framework */; };
 		F02B13DC06614FF6D5857605 /* Pods_TMDB_sample_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA4B9BCBA1A85A1925761E5 /* Pods_TMDB_sample_app.framework */; };
@@ -81,6 +82,7 @@
 		0C87DAA4261A1D4C0058D37A /* MovieInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
 		0C87DAA9261A21780058D37A /* MovieInfoColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoColumnView.swift; sourceTree = "<group>"; };
 		0C87DAAF261A29830058D37A /* UIFont+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Helper.swift"; sourceTree = "<group>"; };
+		0C87DAB7261A44750058D37A /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		4579324CA633D9589F4E1A60 /* Pods-TMDB-sample-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB-sample-app.debug.xcconfig"; path = "Target Support Files/Pods-TMDB-sample-app/Pods-TMDB-sample-app.debug.xcconfig"; sourceTree = "<group>"; };
 		76BF016FD4A7C6BC9FAA2B32 /* Pods-TMDB-sample-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB-sample-appTests.debug.xcconfig"; path = "Target Support Files/Pods-TMDB-sample-appTests/Pods-TMDB-sample-appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DA4B9BCBA1A85A1925761E5 /* Pods_TMDB_sample_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB_sample_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,10 +149,10 @@
 				0C743D8A26150F0A00C341AC /* app */,
 				0C2CABCF261249EC00160C82 /* TMDB_sample_appApp.swift */,
 				0C2CABD1261249EC00160C82 /* ContentView.swift */,
-				0C2CABD3261249F300160C82 /* Assets.xcassets */,
 				0C2CABD8261249F300160C82 /* Persistence.swift */,
 				0C2CABDD261249F300160C82 /* Info.plist */,
 				0C2CABDA261249F300160C82 /* TMDB_sample_app.xcdatamodeld */,
+				0C2CABD3261249F300160C82 /* Assets.xcassets */,
 				0C2CABD5261249F300160C82 /* Preview Content */,
 			);
 			path = "TMDB-sample-app";
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				0C87DAAF261A29830058D37A /* UIFont+Helper.swift */,
+				0C87DAB7261A44750058D37A /* ImageHelper.swift */,
 			);
 			path = SystemExtensions;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				0C743D8C26150F2D00C341AC /* HomeViewController.swift in Sources */,
 				0C87DAAA261A21780058D37A /* MovieInfoColumnView.swift in Sources */,
 				0C87DA9B26193D3C0058D37A /* MovieDetailColumnView.swift in Sources */,
+				0C87DAB8261A44750058D37A /* ImageHelper.swift in Sources */,
 				0C87DAA5261A1D4C0058D37A /* MovieInfoView.swift in Sources */,
 				0C2CABD9261249F300160C82 /* Persistence.swift in Sources */,
 				0C87DAA02619411A0058D37A /* MovieDetailOverview.swift in Sources */,

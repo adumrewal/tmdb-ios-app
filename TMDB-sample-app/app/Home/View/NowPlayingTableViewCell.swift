@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Nuke
 
 class NowPlayingTableViewCell: UITableViewCell {
     private var movieInfoView: MovieInfoView?

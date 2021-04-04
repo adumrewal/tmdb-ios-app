@@ -11,16 +11,19 @@ import CoreData
 class HomeViewDataModel {
     var movieList: [MovieInfoModel]
     var currentPageNumber: Int
+    var totalPages: Int
     
     init() {
         movieList = []
         currentPageNumber = 0
+        totalPages = 100 // default upper limit
     }
 }
 
 public class HomeViewModel {
     
     weak var viewController: HomeViewController?
+    private var isLoading: Bool
     private let dataModel: HomeViewDataModel
     private let managedObjectContext: NSManagedObjectContext
     private lazy var networkManager: NetworkManager = {
@@ -30,9 +33,10 @@ public class HomeViewModel {
     init(_ moc: NSManagedObjectContext) {
         dataModel = HomeViewDataModel()
         managedObjectContext = moc
+        isLoading = true
     }
     
-    func loadNowPlayingData() {
+    func fetchNowPlayingData() {
         networkManager.fetchNowPlaying(page: 1) { (nowPlayingResponseModel) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -44,7 +48,20 @@ public class HomeViewModel {
             }
         }
     }
-    
+
+    func fetchNextPageNowPlayingData() {
+        networkManager.fetchNowPlaying(page: dataModel.currentPageNumber+1) { (nowPlayingResponseModel) in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                guard let nowPlayingModel = nowPlayingResponseModel else {
+                    self.isLoading = false
+                    return
+                }
+                self.handleNowPlayingResult(nowPlayingModel: nowPlayingModel)
+            }
+        }
+    }
+
     func handleNowPlayingResult(nowPlayingModel: NowPlayingResponseModel) {
         handlePageDetails(nowPlayingModel: nowPlayingModel)
         addMovieInfoModelToMovieList(nowPlayingModel.results)
@@ -54,7 +71,7 @@ public class HomeViewModel {
     }
     
     func handlePageDetails(nowPlayingModel: NowPlayingResponseModel) {
-        updateLastFetchedPageNumber(nowPlayingModel.page)
+        updateLastFetchedPageNumber(nowPlayingModel)
     }
     
     func addMovieInfoModelToMovieList(_ modelList: [MovieInfoModel]) {
@@ -63,9 +80,10 @@ public class HomeViewModel {
         }
     }
     
-    func updateLastFetchedPageNumber(_ page: Int) {
-        dataModel.currentPageNumber = page
-        print(page)
+    func updateLastFetchedPageNumber(_ nowPlayingModel: NowPlayingResponseModel) {
+        dataModel.currentPageNumber = nowPlayingModel.page
+        dataModel.totalPages = nowPlayingModel.totalPages
+        print("\(dataModel.currentPageNumber) out of \(dataModel.totalPages)")
     }
     
     func updateViewWithCachedMovieList() {
@@ -74,12 +92,17 @@ public class HomeViewModel {
         updateView()
     }
     
+    func updateView() {
+        isLoading = false
+        viewController?.updateView()
+    }
+    
     func didTap() {
 //        fetchSavedMovieList()
     }
     
-    func updateView() {
-        viewController?.updateView()
+    func loadNowPlayingData() {
+        fetchNowPlayingData()
     }
     
     func nowPlayingMoviesCount() -> Int {
@@ -91,6 +114,23 @@ public class HomeViewModel {
     }
 }
 
+// MARK:- Pagination
+extension HomeViewModel {
+    func checkAndHandleIfPaginationRequired(at row: Int) {
+        if (row + 1 == dataModel.movieList.count) && (dataModel.currentPageNumber != dataModel.totalPages) {
+            handlePaginationRequired()
+        }
+    }
+    
+    func handlePaginationRequired() {
+        if !isLoading && dataModel.currentPageNumber != 0 {
+            isLoading = true
+            fetchNextPageNowPlayingData()
+        }
+    }
+}
+
+// MARK:- Core Data handling
 extension HomeViewModel {
     func clearNowPlayingMO() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NowPlayingMO")

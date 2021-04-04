@@ -18,7 +18,6 @@ public class NetworkManager {
         config.urlCache = nil
 
         session = URLSession.init(configuration: config)
-//        session = URLSession.shared
     }
     
     func fetchNowPlaying(page: Int, completionHandler: @escaping (NowPlayingResponseModel?) -> Void) {

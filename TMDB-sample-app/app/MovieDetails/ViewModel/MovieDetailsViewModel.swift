@@ -27,10 +27,6 @@ class MovieDetailsViewModel {
         return dataModel.movieInfoModel
     }
     
-    func moviePosterPath() -> String {
-        return dataModel.movieInfoModel.posterPath
-    }
-    
     func movieTitle() -> String {
         return dataModel.movieInfoModel.title
     }

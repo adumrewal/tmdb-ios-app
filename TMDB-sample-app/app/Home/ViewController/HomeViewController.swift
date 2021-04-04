@@ -116,6 +116,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        viewModel.checkAndHandleIfPaginationRequired(at: indexPath.row)
+        
         let movieModel = viewModel.nowPlayingMovieInfoModel(at: indexPath.row)
         cell.configure(with: movieModel)
         return cell

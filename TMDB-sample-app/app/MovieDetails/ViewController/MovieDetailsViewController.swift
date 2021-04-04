@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Nuke
 
 class MovieDetailsViewController: UIViewController {
     private var viewModel: MovieDetailsViewModel
