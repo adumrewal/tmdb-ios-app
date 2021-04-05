@@ -33,3 +33,11 @@ Sample iOS App using TMDB apis in Swift - https://developers.themoviedb.org/3/ge
   - Select Target TMDB-sample-app (pre-selected)
   - Choose simulator/device of choice
 - Click on Run
+
+## Future work
+- Search Tab
+- Deeplinks
+- Add protocols for ViewController and ViewModel communication
+- NowPlayingVC, SavedItemsVC and SearchTabVC can benefit from a common super class
+- Modularise CoreData calls
+- Modularise Network calls
