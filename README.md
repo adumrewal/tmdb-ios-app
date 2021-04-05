@@ -10,6 +10,7 @@ Sample iOS App using TMDB apis in Swift - https://developers.themoviedb.org/3/ge
 - Saved Movies are stored using Core Data
 - Notifications on DB state change
 - Recently added saved items are shown on top
+- [Nuke](https://cocoapods.org/pods/Nuke) for image fetching and caching
 - Search Tab - not implemented
 - Deeplinks - not implemented
 
