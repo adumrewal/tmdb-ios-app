@@ -67,7 +67,7 @@ public class NowPlayingViewModel {
         addMovieInfoModelToMovieList(nowPlayingModel.results)
         
         updateView()
-        saveCurrentMovieList()
+        NowPlayingMOHandler.saveCurrentMovieList(dataModel.movieList, moc: managedObjectContext)
     }
     
     func handlePageDetails(nowPlayingModel: NowPlayingResponseModel) {
@@ -87,7 +87,7 @@ public class NowPlayingViewModel {
     }
     
     func updateViewWithCachedMovieList() {
-        let movieModelList = fetchSavedMovieList()
+        let movieModelList = NowPlayingMOHandler.fetchSavedNowPlayingMovieList(in: managedObjectContext)
         addMovieInfoModelToMovieList(movieModelList)
         updateView()
     }
@@ -131,52 +131,5 @@ extension NowPlayingViewModel {
             isLoading = true
             fetchNextPageNowPlayingData()
         }
-    }
-}
-
-// MARK:- Core Data handling
-extension NowPlayingViewModel {
-    func clearNowPlayingMO() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NowPlayingMO")
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        do {
-            try managedObjectContext.execute(batchDeleteRequest)
-        } catch {
-            print("Could not delete NowPlayingMO entity records. \(error)")
-        }
-    }
-    
-    func saveCurrentMovieList() {
-        clearNowPlayingMO()
-        let context = managedObjectContext
-        if let entity = NSEntityDescription.entity(forEntityName: "NowPlayingMO", in: context) {
-            let nowPlayingMO = NSManagedObject(entity: entity, insertInto: context)
-            let movieListData = try? JSONEncoder().encode(dataModel.movieList)
-            nowPlayingMO.setValue(movieListData, forKeyPath: "movieListData")
-            nowPlayingMO.setValue(Date(), forKey: "timeStamp")
-            
-            do {
-                try context.save()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-        }
-    }
-    
-    func fetchSavedMovieList() -> [MovieInfoModel] {
-        let context = managedObjectContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "NowPlayingMO")
-        do {
-            let nowPlayingMO = try context.fetch(fetchRequest)
-            if nowPlayingMO.count > 0,
-               let loadedMovieListData = nowPlayingMO[0].value(forKey: "movieListData") as? Data {
-                if let loadedMovieList = try? JSONDecoder().decode([MovieInfoModel].self, from: loadedMovieListData) {
-                    return loadedMovieList
-                }
-            }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        return []
     }
 }
