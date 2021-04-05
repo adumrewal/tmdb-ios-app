@@ -80,7 +80,7 @@ class MovieDetailsViewController: UIViewController {
         
         view.addSubview(button)
         button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 60).isActive = true
         button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         

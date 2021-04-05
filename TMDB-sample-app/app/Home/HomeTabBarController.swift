@@ -16,8 +16,8 @@ class HomeTabBarController: UITabBarController {
         let nowPlayingVC = NowPlayingViewController(viewContext)
         let savedItemsVC = SavedItemsViewController(viewContext)
 
-        let nowPlayingTabBarItem = UITabBarItem(title: "Now Playing", image: .checkmark, tag: 0)
-        let savedItemsTabBarItem = UITabBarItem(title: "Saved", image: .actions, tag: 1)
+        let nowPlayingTabBarItem = UITabBarItem(title: "Now Playing", image: UIImage(systemName: "play.fill"), tag: 0)
+        let savedItemsTabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "star.fill"), tag: 1)
 
         nowPlayingVC.tabBarItem = nowPlayingTabBarItem
         savedItemsVC.tabBarItem = savedItemsTabBarItem

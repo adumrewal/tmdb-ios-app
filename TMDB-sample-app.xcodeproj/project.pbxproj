@@ -198,6 +198,7 @@
 				0C87DAAE261A29590058D37A /* SystemExtensions */,
 				0C87DAC8261A6FA60058D37A /* CoreData */,
 				0C87DA6626168A030058D37A /* Networking */,
+				0C87DAEF261A94A30058D37A /* Model */,
 				0C87DAE6261A7E400058D37A /* Home */,
 				0C87DA872619299C0058D37A /* MovieDetails */,
 				0C87DA4C2616767A0058D37A /* NowPlaying */,
@@ -209,7 +210,6 @@
 		0C87DA4C2616767A0058D37A /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
-				0C87DA6F261692E90058D37A /* Model */,
 				0C87DA5D26167C3E0058D37A /* View */,
 				0C87DA4E261676890058D37A /* ViewController */,
 				0C87DA4D261676800058D37A /* ViewModel */,
@@ -249,15 +249,6 @@
 				0C87DA6726168A5E0058D37A /* NetworkManager.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		0C87DA6F261692E90058D37A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0C87DA70261706C70058D37A /* MovieInfoModel.swift */,
-				0C87DA7826170F670058D37A /* NowPlayingResponseModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0C87DA872619299C0058D37A /* MovieDetails */ = {
@@ -352,6 +343,15 @@
 				0C87DAE7261A7E590058D37A /* HomeTabBarController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		0C87DAEF261A94A30058D37A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C87DA70261706C70058D37A /* MovieInfoModel.swift */,
+				0C87DA7826170F670058D37A /* NowPlayingResponseModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D620F7C865CC9B019CE1DC97 /* Frameworks */ = {
