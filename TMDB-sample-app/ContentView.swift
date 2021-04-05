@@ -11,11 +11,10 @@ import CoreData
 struct ContentView: UIViewControllerRepresentable {
     @Environment(\.managedObjectContext) private var viewContext
     
-    func makeUIViewController(context: Context) -> UINavigationController {
-        let homeVC = HomeViewController(viewContext)
-        let navController = UINavigationController(rootViewController: homeVC)
+    func makeUIViewController(context: Context) -> UINavigationController {        
+        let tabBarController = HomeTabBarController(viewContext)
+        let navController = UINavigationController(rootViewController: tabBarController)
         navController.setNavigationBarHidden(true, animated: false)
-        navController.addChild(homeVC)
         return navController
     }
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {

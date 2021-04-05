@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  NowPlayingViewModel.swift
 //  TMDB-sample-app
 //
 //  Created by Amol Dumrewal on 02/04/21.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class HomeViewDataModel {
+class NowPlayingViewDataModel {
     var movieList: [MovieInfoModel]
     var currentPageNumber: Int
     var totalPages: Int
@@ -20,18 +20,18 @@ class HomeViewDataModel {
     }
 }
 
-public class HomeViewModel {
+public class NowPlayingViewModel {
     
-    weak var viewController: HomeViewController?
+    weak var viewController: NowPlayingViewController?
     private var isLoading: Bool
-    private let dataModel: HomeViewDataModel
+    private let dataModel: NowPlayingViewDataModel
     private let managedObjectContext: NSManagedObjectContext
     private lazy var networkManager: NetworkManager = {
         return NetworkManager()
     }()
     
     init(_ moc: NSManagedObjectContext) {
-        dataModel = HomeViewDataModel()
+        dataModel = NowPlayingViewDataModel()
         managedObjectContext = moc
         isLoading = true
     }
@@ -101,21 +101,25 @@ public class HomeViewModel {
 //        fetchSavedMovieList()
     }
     
-    func loadNowPlayingData() {
+    func loadViewInitialData() {
         fetchNowPlayingData()
     }
     
-    func nowPlayingMoviesCount() -> Int {
+    func moviesCount() -> Int {
         return dataModel.movieList.count
     }
     
-    func nowPlayingMovieInfoModel(at index: Int) -> MovieInfoModel {
+    func movieInfoModel(at index: Int) -> MovieInfoModel {
         return dataModel.movieList[index]
+    }
+    
+    func currentMOC() -> NSManagedObjectContext {
+        return managedObjectContext
     }
 }
 
 // MARK:- Pagination
-extension HomeViewModel {
+extension NowPlayingViewModel {
     func checkAndHandleIfPaginationRequired(at row: Int) {
         if (row + 1 == dataModel.movieList.count) && (dataModel.currentPageNumber != dataModel.totalPages) {
             handlePaginationRequired()
@@ -131,7 +135,7 @@ extension HomeViewModel {
 }
 
 // MARK:- Core Data handling
-extension HomeViewModel {
+extension NowPlayingViewModel {
     func clearNowPlayingMO() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NowPlayingMO")
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

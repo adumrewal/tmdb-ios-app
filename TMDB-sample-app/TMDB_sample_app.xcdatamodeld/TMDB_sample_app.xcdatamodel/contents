@@ -8,8 +8,14 @@
         <attribute name="movieListData" optional="YES" attributeType="Binary"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="SavedItemsMO" representedClassName="SavedItemsMO" syncable="YES" codeGenerationType="class">
+        <attribute name="movieId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="movieInfoData" optional="YES" attributeType="Binary"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="73"/>
         <element name="NowPlayingMO" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="SavedItemsMO" positionX="-54" positionY="9" width="128" height="88"/>
     </elements>
 </model>

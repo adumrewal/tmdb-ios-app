@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class MovieDetailsViewData {
     var movieInfoModel: MovieInfoModel
@@ -18,9 +19,11 @@ class MovieDetailsViewData {
 class MovieDetailsViewModel {
     weak var viewController: MovieDetailsViewController?
     private var dataModel: MovieDetailsViewData
+    private var managedObjectContext: NSManagedObjectContext
     
-    init(_ movieInfoModel: MovieInfoModel) {
+    init(_ movieInfoModel: MovieInfoModel, managedObjectContext: NSManagedObjectContext) {
         dataModel = MovieDetailsViewData(movieInfoModel)
+        self.managedObjectContext = managedObjectContext
     }
     
     func movieInfoModel() -> MovieInfoModel {
@@ -29,5 +32,9 @@ class MovieDetailsViewModel {
     
     func movieTitle() -> String {
         return dataModel.movieInfoModel.title
+    }
+    
+    func currentMOC() -> NSManagedObjectContext {
+        return managedObjectContext
     }
 }
