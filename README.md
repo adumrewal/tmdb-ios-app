@@ -9,6 +9,7 @@ Sample iOS App using TMDB apis in Swift - https://developers.themoviedb.org/3/ge
 - App works offline and saves previous responses in DB (using Core Data)
 - Saved Movies are stored using Core Data
 - Notifications on DB state change
+- Recently added saved items are shown on top
 - Search Tab - not implemented
 - Deeplinks - not implemented
 
