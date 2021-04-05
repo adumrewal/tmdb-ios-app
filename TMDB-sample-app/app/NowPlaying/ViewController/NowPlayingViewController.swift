@@ -50,7 +50,7 @@ class NowPlayingViewController: UIViewController {
         homeTabView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         homeTabView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         homeTabView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        homeTabView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        homeTabView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
 
         return homeTabView
     }()
