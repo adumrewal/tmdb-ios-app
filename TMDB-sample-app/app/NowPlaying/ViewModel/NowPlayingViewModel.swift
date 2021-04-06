@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+// MARK:- DataModel
 class NowPlayingViewDataModel {
     var movieList: [MovieInfoModel]
     var currentPageNumber: Int
@@ -20,9 +21,9 @@ class NowPlayingViewDataModel {
     }
 }
 
-public class NowPlayingViewModel {
-    
-    weak var viewController: NowPlayingViewController?
+// MARK:- ViewModel
+public class NowPlayingViewModel: MovieListViewModelProtocol {
+    weak var viewController: MovieListViewControllerProtocol?
     private var isLoading: Bool
     private let dataModel: NowPlayingViewDataModel
     private let managedObjectContext: NSManagedObjectContext
@@ -35,7 +36,7 @@ public class NowPlayingViewModel {
         managedObjectContext = moc
         isLoading = true
     }
-    
+
     func fetchNowPlayingData() {
         networkManager.fetchNowPlaying(page: 1) { (nowPlayingResponseModel) in
             DispatchQueue.main.async { [weak self] in
@@ -97,8 +98,9 @@ public class NowPlayingViewModel {
         viewController?.updateView()
     }
     
+    // MARK: MovieListViewModelProtocol
     func didTap() {
-//        fetchSavedMovieList()
+        // Does nothing
     }
     
     func loadViewInitialData() {
@@ -109,7 +111,7 @@ public class NowPlayingViewModel {
         return dataModel.movieList.count
     }
     
-    func movieInfoModel(at index: Int) -> MovieInfoModel {
+    func movieInfoModel(at index: Int) -> MovieInfoModel? {
         return dataModel.movieList[index]
     }
     

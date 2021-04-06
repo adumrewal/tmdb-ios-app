@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+// MARK:- DataModel
 class SavedItemsDataModel {
     var movieList: [MovieInfoModel]
     
@@ -16,8 +17,9 @@ class SavedItemsDataModel {
     }
 }
 
-public class SavedItemsViewModel {
-    weak var viewController: SavedItemsViewController?
+// MARK:- ViewModel
+public class SavedItemsViewModel: MovieListViewModelProtocol {
+    weak var viewController: MovieListViewControllerProtocol?
     private let dataModel: SavedItemsDataModel
     private let managedObjectContext: NSManagedObjectContext
     
@@ -47,8 +49,9 @@ public class SavedItemsViewModel {
         viewController?.updateView()
     }
     
+    // MARK: MovieListViewModelProtocol
     func didTap() {
-//        fetchSavedMovieList()
+        // Does nothing
     }
     
     func loadViewInitialData() {
@@ -59,7 +62,7 @@ public class SavedItemsViewModel {
         return dataModel.movieList.count
     }
     
-    func movieInfoModel(at index: Int) -> MovieInfoModel {
+    func movieInfoModel(at index: Int) -> MovieInfoModel? {
         return dataModel.movieList[index]
     }
     
