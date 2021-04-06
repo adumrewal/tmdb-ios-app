@@ -11,6 +11,7 @@ Sample iOS App using TMDB apis in Swift - https://developers.themoviedb.org/3/ge
 - Notifications on DB state change
 - Recently added saved items are shown on top
 - [Nuke](https://cocoapods.org/pods/Nuke) for image fetching and caching
+- Protocols for Movie list views
 - Search Tab - not implemented
 - Deeplinks - not implemented
 
@@ -38,7 +39,7 @@ Sample iOS App using TMDB apis in Swift - https://developers.themoviedb.org/3/ge
 ## Future work
 - Search Tab
 - Deeplinks
-- Add protocols for ViewController and ViewModel communication
-- NowPlayingVC, SavedItemsVC and SearchTabVC can benefit from a common super class
+- ~~Add protocols for ViewController and ViewModel communication~~
+- ~~NowPlayingVC, SavedItemsVC and SearchTabVC can benefit from a common super class~~
 - Modularise CoreData calls
 - Modularise Network calls
