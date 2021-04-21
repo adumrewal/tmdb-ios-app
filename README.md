@@ -1,6 +1,17 @@
 # TMDB iOS Application
+<img src="https://img.shields.io/badge/status-Active-green" height="20"> <img src="https://img.shields.io/github/issues/adumrewal/tmdb-ios-app" height="20"> <img src="https://img.shields.io/github/stars/adumrewal/tmdb-ios-app" height="20"> <img src="https://img.shields.io/github/license/adumrewal/tmdb-ios-app" height="20"> <img src="https://img.shields.io/badge/architecture-MVVM-yellow" height="20"> <img src="https://img.shields.io/badge/language-Swift-yellow" height="20"> 
 
-Sample iOS App using TMDB apis in Swift - https://developers.themoviedb.org/3/getting-started/introduction
+The Movie Database (TMDb) iOS App in Swift - https://developers.themoviedb.org/3/getting-started/introduction
+
+## Technical specs
+- Language: Swift
+- Networking: URLSession
+- DB Store: CoreData
+- Architecture: MVVM
+- Pagination
+- ViewModels and ViewData for storing UI state
+- Protocols for Movie list views
+- Swift standard coding/decoding for custom objects
 
 ## Features
 - Now Playing tab
@@ -13,16 +24,6 @@ Sample iOS App using TMDB apis in Swift - https://developers.themoviedb.org/3/ge
 - [Nuke](https://cocoapods.org/pods/Nuke) for image fetching and caching
 - Search Tab - not implemented
 - Deeplinks - not implemented
-
-## Technical features
-- Language: Swift
-- Networking: URLSession (caching removed)
-- DB Store: CoreData
-- Architecture: MVVM
-- Pagination
-- ViewModels and ViewData for storing UI state
-- Protocols for Movie list views
-- Swift standard coding/decoding for custom objects
 
 ## Screenshots
 |Now Playing|Saved Items|Movie Detail View|
